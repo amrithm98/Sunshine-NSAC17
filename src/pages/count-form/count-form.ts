@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AddItem } from '../add-item/add-item';
 /**
  * Generated class for the CountForm page.
  *
@@ -19,6 +19,10 @@ export class CountForm {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CountForm');
+  }
+  Save()
+  {
+    this.navCtrl.setRoot(AddItem);
   }
 
 }
