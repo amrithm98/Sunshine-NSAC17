@@ -6,23 +6,39 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Login } from '../pages/login/login';
-
+import {SignupPage} from '../pages/signup/signup'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ApiService } from '../providers/api-service';
 import { HttpModule } from '@angular/http';
+import { AuthData } from '../providers/auth-data';
+import { AngularFireModule,AuthProviders, AuthMethods } from 'angularfire2';
 
+export const firebaseConfig = {
+    apiKey: "AIzaSyC9WxLU3MOk8KKWXhxVmj5OQHyzuiIVjOs",
+    authDomain: "sunshine-9af74.firebaseapp.com",
+    databaseURL: "https://sunshine-9af74.firebaseio.com",
+    projectId: "sunshine-9af74",
+    storageBucket: "sunshine-9af74.appspot.com",
+    messagingSenderId: "57330794556"
+};
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+};
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    Login
+    Login,
+    SignupPage
   ],
   imports: [
     HttpModule,
     BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -30,12 +46,13 @@ import { HttpModule } from '@angular/http';
     MyApp,
     HomePage,
     ListPage,
-    Login
+    Login,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiService  ]
+    ApiService,AuthData ]
 })
 export class AppModule {}
