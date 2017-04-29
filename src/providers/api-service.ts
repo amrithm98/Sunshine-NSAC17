@@ -18,7 +18,7 @@ export class ApiService {
   login(name) {
     console.log(name)
     this.http.get(apiUrl).map(res => res.json()).subscribe(data=>{
-      console.log(data.results)
+      console.log(data.results.cell)
     });
   }
   
