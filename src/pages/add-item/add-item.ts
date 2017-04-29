@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Global } from '../../services/global/global';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the AddItem page.
@@ -29,8 +30,8 @@ export class AddItem {
   submitItem() {
   	var obj = {"p1": this.param1, "p2": this.param2, "p3": this.param3};
   	console.log(obj);
-  	this.global.items.push(obj);
-  	this.navCtrl.pop();
+  	this.global.items.push(obj);  	
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

@@ -1,0 +1,21 @@
+<!--
+  Generated template for the Data page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Data</ion-title>
+  </ion-navbar>
+
+</ion-header>
+  
+
+<ion-content padding>
+  <h3>Current Latitude: {{locationTracker.lat}}</h3>
+  <h3>Current Longitude: {{locationTracker.lng}}</h3>
+  <button ion-button color="secondary" (click)="start()" round>Start Tracking</button>
+<button ion-button color="danger" (click)="stop()" round>Stop Tracking</button>
+</ion-content>

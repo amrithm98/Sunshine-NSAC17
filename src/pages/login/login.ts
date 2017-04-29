@@ -41,8 +41,7 @@ export class Login {
         this.loginForm.value.password).then( authData => {
           if(this.global.firstTime)
           {
-                this.navCtrl.setRoot(HomePage);
-                this.navCtrl.push(CountForm);
+                this.navCtrl.setRoot(CountForm);
           }
           else
           {

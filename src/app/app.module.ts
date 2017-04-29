@@ -18,6 +18,10 @@ import { Item } from '../pages/item/item';
 import { AddItem } from '../pages/add-item/add-item';
 import { Global } from '../services/global/global';
 import { CountForm } from '../pages/count-form/count-form';
+import { LocationTracker } from '../providers/location-tracker';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Data } from '../pages/data/data';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyC9WxLU3MOk8KKWXhxVmj5OQHyzuiIVjOs",
@@ -39,6 +43,7 @@ const myFirebaseAuthConfig = {
     SignupPage,
     Item,
     AddItem,
+    Data,
     CountForm
   ],
   imports: [
@@ -53,6 +58,7 @@ const myFirebaseAuthConfig = {
     HomePage,
     Login,
     SignupPage,
+    Data,
     Item,
     AddItem,
     CountForm
@@ -60,7 +66,10 @@ const myFirebaseAuthConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    BackgroundGeolocation,
+    Geolocation,
     Global,
+    LocationTracker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiService,AuthData ]
 })

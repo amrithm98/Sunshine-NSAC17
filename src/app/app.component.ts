@@ -12,13 +12,15 @@ import { AuthData } from '../providers/auth-data';
 import { Item } from '../pages/item/item';
 import { AddItem } from '../pages/add-item/add-item';
 import { Global } from '../services/global/global';
+import { Data } from '../pages/data/data';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any;
+  rootPage: any=Login;
 
   pages: Array<{title: string, component: any}>;
 
@@ -38,7 +40,9 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Login', component: Login },
       { title: 'List', component: ListPage },
-      { title: 'Sign Up', component: SignupPage}
+      { title: 'Sign Up', component: SignupPage},
+      { title: 'Location', component: Data}
+
 
     ];
 
