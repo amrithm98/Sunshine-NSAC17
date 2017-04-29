@@ -2,19 +2,23 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {SignupPage} from '../pages/signup/signup'
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Login } from '../pages/login/login';
 import { AngularFire } from 'angularfire2';
 import { AuthData } from '../providers/auth-data';
+import { Item } from '../pages/item/item';
+import { AddItem } from '../pages/add-item/add-item';
+import { Global } from '../services/global/global';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any ;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
@@ -33,7 +37,9 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Login', component: Login },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Sign Up', component: SignupPage}
+
     ];
 
   } 

@@ -6,7 +6,9 @@ import { AuthData } from '../../providers/auth-data';
 import { HomePage } from '../home/home';
 import { EmailValidator } from '../../validators/email';
 import { SignupPage } from '../signup/signup';
+import { CountForm } from '../count-form/count-form';
 
+import {Global} from '../../services/global/global'
 /**
  * Generated class for the Login page.
  * See http://ionicframework.com/docs/components/#navigation for more info
@@ -23,7 +25,7 @@ export class Login {
   loading: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public restapiService: ApiService,public authData: AuthData,
   public formBuilder: FormBuilder, public alertCtrl: AlertController,
-  public loadingCtrl: LoadingController) {
+  public loadingCtrl: LoadingController,public global:Global) {
     this.loginForm = formBuilder.group({
     email: ['', Validators.compose([Validators.required, 
         EmailValidator.isValid])],
@@ -37,7 +39,15 @@ export class Login {
     } else {
       this.authData.loginUser(this.loginForm.value.email, 
         this.loginForm.value.password).then( authData => {
-          this.navCtrl.setRoot(HomePage);
+          if(this.global.firstTime)
+          {
+                this.navCtrl.setRoot(HomePage);
+                this.navCtrl.push(CountForm);
+          }
+          else
+          {
+                this.navCtrl.setRoot(HomePage);
+          }
     }, error => {
       this.loading.dismiss().then( () => {
         let alert = this.alertCtrl.create({

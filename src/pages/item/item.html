@@ -1,0 +1,29 @@
+<!--
+  Generated template for the Item page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Item</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+	  <ion-item *ngFor="let key of values">
+	    <h2>{{key.p1}}</h2>
+	    <h3>{{key.p2}}</h3>
+	    <p>{{key.p3}}</p>
+	  </ion-item>
+	</ion-list>
+	<ion-fab right bottom>
+	    <button ion-fab color="red" (click)=addItem()><ion-icon name="add"></ion-icon></button>
+  	</ion-fab>
+</ion-content>

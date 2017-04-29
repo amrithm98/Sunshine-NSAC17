@@ -26,4 +26,6 @@ export class AuthData {
     signupUser(newEmail: string, newPassword: string): firebase.Promise<any> {
     return this.af.auth.createUser({ email: newEmail, password: newPassword });
     }
+
+
 } 
