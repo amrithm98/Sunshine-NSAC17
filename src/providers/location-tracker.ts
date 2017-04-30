@@ -3,7 +3,8 @@ import { Injectable, NgZone } from '@angular/core';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 import 'rxjs/add/operator/filter';
- 
+import { Storage } from '@ionic/storage';
+
 @Injectable()
 export class LocationTracker {
  
@@ -11,7 +12,7 @@ export class LocationTracker {
   public lat: number = 0;
   public lng: number = 0;
  
-  constructor(public zone: NgZone,public backgroundGeolocation:BackgroundGeolocation,public geolocation:Geolocation) {
+  constructor(public zone: NgZone,public backgroundGeolocation:BackgroundGeolocation,public geolocation:Geolocation,public storage:Storage) {
  
   }
  
@@ -27,9 +28,11 @@ export class LocationTracker {
       };
     
       this.backgroundGeolocation.configure(config).subscribe((location) => {
-    
+        
         console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
-    
+        this.storage.ready().then(() => {
+            this.storage.set('location',location);
+        });
         // Run update inside of Angular's zone
         this.zone.run(() => {
           this.lat = location.latitude;
@@ -57,7 +60,9 @@ export class LocationTracker {
     .subscribe((position: Geoposition) => {
     
       console.log(position);
-    
+      this.storage.ready().then(() => {
+       this.storage.set('location',position);
+     });
       // Run update inside of Angular's zone
       this.zone.run(() => {
         this.lat = position.coords.latitude;
@@ -66,7 +71,6 @@ export class LocationTracker {
     
     });
   }
- 
   stopTracking() {
       console.log('stopTracking');
       this.backgroundGeolocation.finish();

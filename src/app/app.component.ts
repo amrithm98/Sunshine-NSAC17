@@ -13,6 +13,7 @@ import { Item } from '../pages/item/item';
 import { AddItem } from '../pages/add-item/add-item';
 import { Global } from '../services/global/global';
 import { Data } from '../pages/data/data';
+import { CountForm } from '../pages/count-form/count-form';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,16 +21,23 @@ import { Data } from '../pages/data/data';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any=Login;
+  rootPage:any=Login;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public af: AngularFire) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public af: AngularFire,public global:Global){
     this.initializeApp();
     const authObserver = af.auth.subscribe( user => {
     if (user) {
-      this.rootPage = HomePage;
-      authObserver.unsubscribe();
+      if(global.firstTime){
+          this.rootPage = CountForm;
+      }
+      else
+      {
+        this.rootPage = HomePage;
+        authObserver.unsubscribe();
+      }
+
     } else {
       this.rootPage = Login;
       authObserver.unsubscribe();
@@ -39,11 +47,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Login', component: Login },
-      { title: 'List', component: ListPage },
-      { title: 'Sign Up', component: SignupPage},
-      { title: 'Location', component: Data}
-
-
+      { title: 'Profile', component: Data },
+      { title: 'Device List', component: Item }
     ];
 
   } 

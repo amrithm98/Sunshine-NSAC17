@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AddItem } from '../../pages/add-item/add-item';
 import { Global } from '../../services/global/global';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the Item page.
@@ -22,13 +23,16 @@ export class Item {
   constructor(public navCtrl: NavController, public navParams: NavParams, public global: Global) {
   	this.addOneItem = AddItem;
   	this.values = this.global.items;
-  	// console.log(global);
+  	console.log(global);
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad Item');
   }
-
+  Done()
+  {
+    alert('You Have Chosen Your Device List');
+    this.navCtrl.setRoot(HomePage);
+  }
   addItem() {
   	this.navCtrl.push(this.addOneItem);
   	// console.log(this.global);

@@ -13,18 +13,18 @@
 <ion-content padding>
 	<ion-list>
 	  <ion-item>
-	    <ion-label floating>Param 1</ion-label>
-	    <ion-input type="text" [(ngModel)]="param1">{{param1}}</ion-input>
+	    <ion-label floating>Device Name</ion-label>
+	    <ion-input type="text" [(ngModel)]="device">{{param1}}</ion-input>
 	  </ion-item>
 
 	  <ion-item>
-	    <ion-label floating>Param 2</ion-label>
-	    <ion-input type="text" [(ngModel)]="param2">{{param2}}</ion-input>
+	    <ion-label floating>Consumed Power (W)</ion-label>
+	    <ion-input type="text" [(ngModel)]="power">{{param2}}</ion-input>
 	  </ion-item>
 
 	  <ion-item>
-	    <ion-label floating>Param 3</ion-label>
-	    <ion-input type="text" [(ngModel)]="param3">{{param3}}</ion-input>
+	    <ion-label floating>No. of devices</ion-label>
+	    <ion-input type="text" [(ngModel)]="count">{{param3}}</ion-input>
 	  </ion-item>
 	</ion-list>
 	<button ion-button (click)=submitItem()>Submit</button>

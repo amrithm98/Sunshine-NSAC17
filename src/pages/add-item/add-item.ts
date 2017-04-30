@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Global } from '../../services/global/global';
 import { HomePage } from '../home/home';
+import { Storage } from '@ionic/storage';
+import { Item } from '../item/item';
 
 /**
  * Generated class for the AddItem page.
@@ -16,11 +18,15 @@ import { HomePage } from '../home/home';
 })
 export class AddItem {
 
-	param1 = "";
-	param2 = "";
-	param3 = "";
+	device = "";
+	power = "";
+	count = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public global: Global) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public global: Global,public storage: Storage) {
+      this.storage.ready().then(() => {
+        console.log(this.global.items);
+       this.storage.set('firstTime',false);
+     });
   }
 
   ionViewDidLoad() {
@@ -28,10 +34,13 @@ export class AddItem {
   }
 
   submitItem() {
-  	var obj = {"p1": this.param1, "p2": this.param2, "p3": this.param3};
-  	console.log(obj);
-  	this.global.items.push(obj);  	
-    this.navCtrl.setRoot(HomePage);
+  	var obj = {"device": this.device, "power": this.power, "count": this.count};
+    this.global.items.push(obj);  	
+    this.storage.ready().then(() => {
+        console.log(this.global.items);
+       this.storage.set('deviceList',this.global.items);
+     });
+    this.navCtrl.setRoot(Item);
   }
 
 }

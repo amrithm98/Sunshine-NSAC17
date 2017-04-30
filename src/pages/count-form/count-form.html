@@ -22,29 +22,18 @@
 
 	  <ion-item>
 	    <ion-label floating>Solar Panel Brand</ion-label>
-	    <ion-input type="text" value=""></ion-input>
+	    <ion-input type="text" [(ngModel)]="brand" value=""></ion-input>
 	  </ion-item>
-
 	  <ion-item>
 	    <ion-label floating>Maximum Power Input</ion-label>
-	    <ion-input type="text" value=""></ion-input>
+	    <ion-input type="number" value="" [(ngModel)]="output_max" ></ion-input>
 	  </ion-item>
 
 	  <ion-item>
 	    <ion-label floating>Number of rooms</ion-label>
-	    <ion-input type="numbers" value=""></ion-input>
-	  </ion-item>
-
-	  <ion-item>
-	    <ion-label floating>Number of rooms</ion-label>
-	    <ion-input type="numbers" value=""></ion-input>
-	  </ion-item>
-
-	  <ion-item>
-	    <ion-label floating>Number of rooms</ion-label>
-	    <ion-input type="numbers" value=""></ion-input>
+	    <ion-input type="numbers" value="" [(ngModel)]="rooms"></ion-input>
 	  </ion-item>
 
 	</ion-list>
-<button ion-button color="secondary" (click)="Save()">Secondary</button>
+<button ion-button color="secondary" (click)="Save()">Save</button>
 </ion-content>

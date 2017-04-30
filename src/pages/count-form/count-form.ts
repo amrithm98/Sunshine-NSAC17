@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AddItem } from '../add-item/add-item';
+import { Item } from '../item/item';
+import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the CountForm page.
  *
@@ -13,8 +16,11 @@ import { AddItem } from '../add-item/add-item';
   templateUrl: 'count-form.html',
 })
 export class CountForm {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  brand;
+  output_max;
+  rooms;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+    
   }
 
   ionViewDidLoad() {
@@ -22,7 +28,12 @@ export class CountForm {
   }
   Save()
   {
-    this.navCtrl.setRoot(AddItem);
+    this.storage.ready().then(() => {
+       this.storage.set('brand', this.brand);
+       this.storage.set('output_max', this.output_max);
+       this.storage.set('rooms', this.rooms);
+     });
+    this.navCtrl.setRoot(Item);
   }
 
 }

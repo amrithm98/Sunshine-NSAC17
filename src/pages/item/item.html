@@ -11,19 +11,19 @@
     </button>
     <ion-title>Item</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
 	<ion-list>
 	  <ion-item *ngFor="let key of values">
-	    <h2>{{key.p1}}</h2>
-	    <h3>{{key.p2}}</h3>
-	    <p>{{key.p3}}</p>
+	    <h2><b>Name:</b> {{key.device}}</h2>
+	    <h3><b>Power: </b>{{key.power}}</h3>
+	    <p><b>Count:</b>{{key.count}}</p>
 	  </ion-item>
 	</ion-list>
 	<ion-fab right bottom>
 	    <button ion-fab color="red" (click)=addItem()><ion-icon name="add"></ion-icon></button>
-  	</ion-fab>
+	</ion-fab>
+	<button ion-button color="secondary" (click)="Done()">Done</button>
 </ion-content>

@@ -9,7 +9,6 @@ import { Login } from '../pages/login/login';
 import {SignupPage} from '../pages/signup/signup'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { ApiService } from '../providers/api-service';
 import { HttpModule } from '@angular/http';
 import { AuthData } from '../providers/auth-data';
@@ -22,7 +21,7 @@ import { LocationTracker } from '../providers/location-tracker';
 import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Data } from '../pages/data/data';
-
+import { IonicStorageModule } from '@ionic/storage';
 export const firebaseConfig = {
     apiKey: "AIzaSyC9WxLU3MOk8KKWXhxVmj5OQHyzuiIVjOs",
     authDomain: "sunshine-9af74.firebaseapp.com",
@@ -50,6 +49,7 @@ const myFirebaseAuthConfig = {
     HttpModule,
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
