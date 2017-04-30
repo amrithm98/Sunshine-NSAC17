@@ -7,8 +7,10 @@ import { HomePage } from '../home/home';
 import { EmailValidator } from '../../validators/email';
 import { SignupPage } from '../signup/signup';
 import { CountForm } from '../count-form/count-form';
+import { Storage } from '@ionic/storage';
+import { Global } from '../../services/global/global'
+import { SolarSpecs } from '../solar-specs/solar-specs';
 
-import {Global} from '../../services/global/global'
 /**
  * Generated class for the Login page.
  * See http://ionicframework.com/docs/components/#navigation for more info
@@ -25,12 +27,20 @@ export class Login {
   loading: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public restapiService: ApiService,public authData: AuthData,
   public formBuilder: FormBuilder, public alertCtrl: AlertController,
-  public loadingCtrl: LoadingController,public global:Global) {
+  public loadingCtrl: LoadingController,public global:Global,public storage:Storage) {
     this.loginForm = formBuilder.group({
     email: ['', Validators.compose([Validators.required, 
         EmailValidator.isValid])],
     password: ['', Validators.compose([Validators.minLength(6), 
     Validators.required])]
+  });
+  storage.ready().then(()=>{
+      storage.get('firstTime').then(val=>{
+        if(val!=null){
+            this.global.firstTime=val;
+            console.log('Loaded'+ val);
+        }
+      });
   });
 } 
   loginUser(){
@@ -41,7 +51,7 @@ export class Login {
         this.loginForm.value.password).then( authData => {
           if(this.global.firstTime)
           {
-                this.navCtrl.setRoot(CountForm);
+                this.navCtrl.setRoot(SolarSpecs);
           }
           else
           {

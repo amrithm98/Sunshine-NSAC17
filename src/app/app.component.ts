@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {SignupPage} from '../pages/signup/signup'
-
+import { SignupPage } from '../pages/signup/signup'
+import { Storage } from '@ionic/storage';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { Login } from '../pages/login/login';
@@ -14,7 +14,7 @@ import { AddItem } from '../pages/add-item/add-item';
 import { Global } from '../services/global/global';
 import { Data } from '../pages/data/data';
 import { CountForm } from '../pages/count-form/count-form';
-
+import { SolarSpecs } from '../pages/solar-specs/solar-specs';
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,8 +25,34 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public af: AngularFire,public global:Global){
+  constructor(public platform: Platform, public statusBar: StatusBar,public storage:Storage,public splashScreen: SplashScreen,public af: AngularFire,public global:Global){
     this.initializeApp();
+    storage.ready().then(()=>{
+      storage.get('firstTime').then(val=>{
+        if(val!=null){
+            this.global.firstTime=val;
+            console.log('Loaded'+ val);
+        }
+      });
+      storage.get('deviceList').then(val=>{
+        if(val!=null){
+        this.global.items=val;
+        console.log('LoadedDevice'+ val);
+        }
+      });
+      storage.get('location').then(val=>{
+        console.log('Location'+ val);
+      });
+      storage.get('specs').then(val=>{
+        if(val!=null){
+        console.log('specs'+ val);
+        this.global.specs=val;
+        }
+        // this.global.brand=val.brand;
+        // this.global.output_max=val.output_max;
+        // this.global.rooms-val.rooms;
+      });
+    });
     const authObserver = af.auth.subscribe( user => {
     if (user) {
       if(global.firstTime){
@@ -48,7 +74,9 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Login', component: Login },
       { title: 'Profile', component: Data },
-      { title: 'Device List', component: Item }
+      { title: 'Device List', component: Item },
+      { title: 'Solar Specs', component: SolarSpecs },
+
     ];
 
   } 

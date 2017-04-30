@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -22,6 +21,8 @@ import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Data } from '../pages/data/data';
 import { IonicStorageModule } from '@ionic/storage';
+import { SolarSpecs } from '../pages/solar-specs/solar-specs';
+
 export const firebaseConfig = {
     apiKey: "AIzaSyC9WxLU3MOk8KKWXhxVmj5OQHyzuiIVjOs",
     authDomain: "sunshine-9af74.firebaseapp.com",
@@ -43,7 +44,8 @@ const myFirebaseAuthConfig = {
     Item,
     AddItem,
     Data,
-    CountForm
+    CountForm,
+    SolarSpecs
   ],
   imports: [
     HttpModule,
@@ -61,7 +63,8 @@ const myFirebaseAuthConfig = {
     Data,
     Item,
     AddItem,
-    CountForm
+    CountForm,
+    SolarSpecs
   ],
   providers: [
     StatusBar,

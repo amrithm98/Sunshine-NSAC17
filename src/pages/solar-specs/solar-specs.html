@@ -1,0 +1,57 @@
+<!--
+  Generated template for the SolarSpecs page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Panel Specifications</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+	  <ion-item>
+	    <ion-label floating>DC System Size (kW)</ion-label>
+	    <ion-input type="text" [(ngModel)]="system_capacity">{{dcSysSize}}</ion-input>
+	  </ion-item>
+	  <ion-item>
+		  <ion-label floating>Module Type</ion-label>
+		  <ion-select [(ngModel)]="module_type">
+		    <ion-option>Standard</ion-option>
+		    <ion-option>Premium</ion-option>
+		    <ion-option>Thin Film</ion-option>
+		  </ion-select>
+	  </ion-item>
+	  <ion-item>
+		  <ion-label floating>Array Type</ion-label>
+		  <ion-select [(ngModel)]="array_type">
+		    <ion-option>Fixed (open rack)</ion-option>
+		    <ion-option>Fixed (roof mount)</ion-option>
+		    <ion-option>1-Axis Tracking</ion-option>
+		    <ion-option>1-Axis Backtracking</ion-option>
+		    <ion-option>2-Axis Tracking</ion-option>
+		  </ion-select>
+	  </ion-item>
+	  <ion-item>
+	    <ion-label floating>System Losses (%)</ion-label>
+	    <ion-input type="text" [(ngModel)]="losses">{{sysLoss}}</ion-input>
+	  </ion-item>
+	  <ion-item>
+	    <ion-label floating>Tilt (deg)</ion-label>
+	    <ion-input type="text" [(ngModel)]="tilt">{{tilt}}</ion-input>
+	  </ion-item>
+	  <ion-item>
+	    <ion-label floating>Azimuth (deg)</ion-label>
+	    <ion-input type="text" [(ngModel)]="azimuth">{{azimuth}}</ion-input>
+	  </ion-item>
+	</ion-list>
+	<button ion-button (click)=submitItem()>Submit</button>
+</ion-content>

@@ -21,5 +21,10 @@ export class ApiService {
       console.log(data.results)
     });
   }
+  getSolarDetails(object)
+  {
+    alert(JSON.stringify(object));
+    console.log(object);
+  }
   
 }

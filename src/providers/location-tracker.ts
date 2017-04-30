@@ -18,7 +18,6 @@ export class LocationTracker {
  
   startTracking() {
       // Background Tracking
- 
       let config = {
         desiredAccuracy: 0,
         stationaryRadius: 20,
@@ -26,19 +25,16 @@ export class LocationTracker {
         debug: true,
         interval: 2000 
       };
-    
       this.backgroundGeolocation.configure(config).subscribe((location) => {
-        
         console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
-        this.storage.ready().then(() => {
-            this.storage.set('location',location);
-        });
+        var pos={'lat':location.latitude,'lon':location.longitude};
+        this.storage.set('location',pos);
         // Run update inside of Angular's zone
         this.zone.run(() => {
           this.lat = location.latitude;
           this.lng = location.longitude;
         });
-    
+
       }, (err) => {
     
         console.log(err);
@@ -61,7 +57,8 @@ export class LocationTracker {
     
       console.log(position);
       this.storage.ready().then(() => {
-       this.storage.set('location',position);
+        var pos={'lat':position.coords.latitude,'lon':position.coords.longitude};
+        this.storage.set('location',pos);
      });
       // Run update inside of Angular's zone
       this.zone.run(() => {
