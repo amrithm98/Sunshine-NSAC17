@@ -10,6 +10,9 @@ Nasa Space Apps Challenge 2017- "Earth and Us/You are my sunshine"
 Team :Gryphons
 <br>
 
+<img src="http://ieee-link.org/wplink/wp-content/uploads/2016/04/pjimage.jpg">
+<br>
+
 You need to install ionic and cordova on your machine by running `npm install -g ionic cordova`
 <br>
 
