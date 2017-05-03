@@ -13,6 +13,12 @@ Team :Gryphons
 <img src="http://ieee-link.org/wplink/wp-content/uploads/2016/04/pjimage.jpg">
 <br>
 
+1. Cross platform application connected to firebase
+2. User can enter solar panel specifications and get output predictions based on user location and other data.
+3. User can set priority on devices and devices that can be used with available power can be identified.
+4. User can calculate required tilt of the panel based on the current location.
+<br>
+
 You need to install ionic and cordova on your machine by running `npm install -g ionic cordova`
 <br>
 
