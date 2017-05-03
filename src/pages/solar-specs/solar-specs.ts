@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Global } from '../../services/global/global';
 import { ApiService } from '../../providers/api-service';
 import { Storage } from '@ionic/storage';
+import { Item } from '../item/item';
 
 /**
  * Generated class for the SolarSpecs page.
@@ -40,6 +41,7 @@ export class SolarSpecs {
   	console.log(object);
   	// this.global.items.push(obj);
   	// this.navCtrl.pop();
+		this.navCtrl.setRoot(Item);
   }
 
 }

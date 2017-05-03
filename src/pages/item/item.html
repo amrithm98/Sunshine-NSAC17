@@ -9,21 +9,36 @@
   	<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Item</ion-title>
+    <ion-title>Device List</ion-title>
   </ion-navbar>
+
 </ion-header>
 
-
 <ion-content padding>
-	<ion-list>
-	  <ion-item *ngFor="let key of values">
-	    <h2><b>Name:</b> {{key.device}}</h2>
-	    <h3><b>Power: </b>{{key.power}}</h3>
-	    <p><b>Count:</b>{{key.count}}</p>
-	  </ion-item>
-	</ion-list>
+	<ion-card *ngFor="let key of values">
+
+	  <ion-card-header>
+	    {{key.device}}
+	  </ion-card-header>
+
+	  <ion-card-content>
+	  	<h2>Device: {{key.device}}</h2>
+    	<h3>Power: {{key.power}}</h3>
+    	<h3>Maximum Count: {{key.count}}</h3>
+    	<p>Required Count: {{key.cur}}</p>
+    	<p>Constant: </p>
+    	<ion-checkbox [(ngModel)]="key.cons"></ion-checkbox>
+		<ion-range min="0" max={{key.count}} [(ngModel)]="key.cur" color="secondary" (ionChange)="f(key)">
+	      <ion-label range-left>0</ion-label>
+	      <ion-label range-right>{{key.count}}</ion-label>
+	    </ion-range>
+	    <!-- Add card content here! -->
+	</ion-card-content>
+
+	</ion-card>
 	<ion-fab right bottom>
 	    <button ion-fab color="red" (click)=addItem()><ion-icon name="add"></ion-icon></button>
-	</ion-fab>
-	<button ion-button color="secondary" (click)="Done()">Done</button>
+  	</ion-fab>
+    <button ion-button color="secondary" (click)="Done()">Done</button>
+
 </ion-content>

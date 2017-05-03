@@ -23,12 +23,13 @@ export class LocationTracker {
         stationaryRadius: 20,
         distanceFilter: 10, 
         debug: true,
-        interval: 2000 
+        interval:     2000 
       };
       this.backgroundGeolocation.configure(config).subscribe((location) => {
         console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
         var pos={'lat':location.latitude,'lon':location.longitude};
         this.storage.set('location',pos);
+        alert(pos);
         // Run update inside of Angular's zone
         this.zone.run(() => {
           this.lat = location.latitude;

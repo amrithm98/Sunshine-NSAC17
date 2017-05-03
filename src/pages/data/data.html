@@ -15,12 +15,108 @@
 
 </ion-header>
   
-
 <ion-content padding>
   <h3>Current Latitude: {{locationTracker.lat}}</h3>
   <h3>Current Longitude: {{locationTracker.lng}}</h3>
   <button ion-button color="secondary" (click)="start()" round>Get Location</button>
 <button ion-button color="danger" (click)="stop()" round>Stop Tracking</button>
 <button ion-button color="primary" (click)="getSolarDetails()" round>Get Details</button>
+<ion-card>
 
+	  <ion-card-header>
+	    AC Monthly
+	  </ion-card-header>
+
+	  <ion-card-content>
+	  <div *ngFor="let key of obj.outputs.ac_monthly">
+	  	{{key}}
+	  </div>
+	    <!-- Add card content here! -->
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+	  <ion-card-header>
+	    POA Monthly
+	  </ion-card-header>
+
+	  <ion-card-content>
+	  <div *ngFor="let key of obj.outputs.poa_monthly">
+	  	{{key}}
+	  </div>
+	    <!-- Add card content here! -->
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+	  <ion-card-header>
+	    Solrad Monthly
+	  </ion-card-header>
+
+	  <ion-card-content>
+	  <div *ngFor="let key of obj.outputs.solrad_monthly">
+	  	{{key}}
+	  </div>
+	    <!-- Add card content here! -->
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+	  <ion-card-header>
+	    DC Monthly
+	  </ion-card-header>
+
+	  <ion-card-content>
+	  <div *ngFor="let key of obj.outputs.dc_monthly">
+	  	{{key}}
+	  </div>
+	    <!-- Add card content here! -->
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+	  <ion-card-header>
+	    AC Annual
+	  </ion-card-header>
+
+	  <ion-card-content>
+	  	{{obj.outputs.ac_annual}}
+	    <!-- Add card content here! -->
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+	  <ion-card-header>
+	    Solrad Annual
+	  </ion-card-header>
+
+	  <ion-card-content>
+	  	{{obj.outputs.solrad_annual}}
+	    <!-- Add card content here! -->
+	  </ion-card-content>
+
+	</ion-card>
+
+	<ion-card>
+
+	  <ion-card-header>
+	    Capacity Factor
+	  </ion-card-header>
+
+	  <ion-card-content>
+	  	{{obj.outputs.capacity_factor}}
+	    <!-- Add card content here! -->
+	  </ion-card-content>
+
+	</ion-card>
 </ion-content>
